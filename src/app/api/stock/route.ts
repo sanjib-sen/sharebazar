@@ -4,7 +4,6 @@ import get_stock_price from './parse'
 export async function GET(request: NextRequest,   { params }: { params: { slug: string } }) {
   const searchParams = request.nextUrl.searchParams
   const company = searchParams.get('company')
-  console.log(company);
   if (!company) {
     return new Response('Missing company name', { status: 400 })
   }
