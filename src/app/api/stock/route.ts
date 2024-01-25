@@ -2,8 +2,9 @@ import { type NextRequest } from "next/server";
 import get_stock_price from "./parse";
 
 export async function GET(request: NextRequest) {
-  const sender = request.headers.get("host");
-  if (sender !== "localhost:3000" && sender !== process.env.NEXT_PUBLIC_VERCEL_URL) {
+  const sender = request.headers.get("referer");
+  console.log(sender);
+  if (sender !== "http://localhost:3000/" && sender !== `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/`) {
     return new Response("Unauthorized", { status: 401 });
   }
   const searchParams = request.nextUrl.searchParams;
