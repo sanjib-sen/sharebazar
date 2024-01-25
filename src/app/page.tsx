@@ -8,12 +8,9 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-6 backdrop-blur-sm">
       <div className="flex flex-col gap-6 pb-24">
-
         {stocks.map((stock: StockPropsType, index: number) => (
-
           <StockRoot key={index} props={stock} />
-        ))
-        }
+        ))}
       </div>
       <Footer />
     </main>
