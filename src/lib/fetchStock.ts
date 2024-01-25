@@ -1,5 +1,5 @@
 "use client";
-import useSWR from "swr";
+import { useQuery } from "@tanstack/react-query";
 
 class FetchError extends Error {
   status: number;
@@ -9,8 +9,8 @@ class FetchError extends Error {
   }
 }
 
-const fetcher = async (url: string) => {
-  const res = await fetch(url, { cache: "no-store" });
+export const fetchStock = async (url: string) => {
+  const res = await fetch(url);
   if (!res.ok) {
     const error = new FetchError(
       "An error occurred while fetching the data.",
@@ -23,21 +23,10 @@ const fetcher = async (url: string) => {
   return res.json() as Promise<{ company: string; price: number }>;
 };
 
-export function useFetchStock(company: string) {
-  const { data, error, isLoading, isValidating, mutate } = useSWR(
-    `/api/stock?company=${company}`,
-    fetcher,
-    {
-      revalidateIfStale: false,
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-    },
-  );
-  return {
-    stockData: data,
-    isLoading,
-    isError: error,
-    isValidating,
-    update: mutate,
-  };
-}
+export const useStockFetch = (company: string) => {
+  const { ...queryResult } = useQuery({
+    queryKey: ["stock", company],
+    queryFn: async () => await fetchStock(`/api/stock?company=${company}`),
+  });
+  return queryResult;
+};

@@ -1,14 +1,14 @@
 {
-    "stocks":[
-        {
-            "companyName": "ARAMIT",
-            "buyingPrice": 260.07,
-            "stockAmount": 200
-        },
-        {
-            "companyName": "BATBC",
-            "buyingPrice": 584.5,
-            "stockAmount": 102
-        }
-    ]
+  "stocks": [
+    {
+      "companyName": "ARAMIT",
+      "buyingPrice": 260.07,
+      "stockAmount": 200
+    },
+    {
+      "companyName": "BATBC",
+      "buyingPrice": 584.5,
+      "stockAmount": 102
+    }
+  ]
 }
