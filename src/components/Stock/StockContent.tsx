@@ -37,7 +37,7 @@ export function StockContent({ props }: { props: StockPropsType }) {
     return (
       <div className="flex items-center justify-center space-x-2">
         <div className="flex-1 text-center">
-          <div className="text-4xl font-bold tracking-tighter px-4 text-balance">
+          <div className={`text-4xl font-bold tracking-tighter px-4 text-balance ${totalProfit > 0 ? "dark:text-green-600 text-green-800" : "dark:text-red-600 text-red-800"}`}>
             {totalProfitInBd} টাকা {totalProfit > 0 ? "লাভ" : "লস"}
           </div>
           <div className="flex flex-row justify-between text-sm pt-2 gap-4 text-balance px-2">
