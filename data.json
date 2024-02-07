@@ -1,6 +1,11 @@
 {
   "stocks": [
     {
+      "companyName": "BESTHLDNG",
+      "buyingPrice": 24.00,
+      "stockAmount": 417
+    },
+    {
       "companyName": "ARAMIT",
       "buyingPrice": 260.07,
       "stockAmount": 200
