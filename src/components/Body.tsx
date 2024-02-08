@@ -1,22 +1,19 @@
-"use client";
-
 import { StockPropsType } from "@/types/stock";
 import { Footer } from "@/components/Footer";
 import { StockRoot } from "@/components/Stock/StockRoot";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { promises as fs } from "fs";
 
-export const queryClient = new QueryClient();
-
-export function Body({ props }: { props: StockPropsType[] }) {
-  const stocks = props;
+export async function Body() {
+  const file = await fs.readFile(process.cwd() + "/data.json", "utf8");
+  const stocks = JSON.parse(file).stocks as StockPropsType[];
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       <div className="flex flex-col gap-6 pb-24">
         {stocks.map((stock: StockPropsType, index: number) => (
           <StockRoot key={index} props={stock} />
         ))}
       </div>
       <Footer stocks={stocks} />
-    </QueryClientProvider>
+    </>
   );
 }

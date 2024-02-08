@@ -2,7 +2,7 @@
   "stocks": [
     {
       "companyName": "BESTHLDNG",
-      "buyingPrice": 24.00,
+      "buyingPrice": 24.0,
       "stockAmount": 417
     },
     {
