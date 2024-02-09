@@ -1,10 +1,10 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { StockContent } from "./StockContent";
+import { StockContent } from "@/components/Stock/StockContent";
 import { StockType } from "@/types/stock";
-import { StockHeader } from "./StockHeader";
+import { StockHeader } from "@/components/Stock/StockHeader";
 import { Suspense } from "react";
-import { StockLoading } from "./StockLoading";
+import { StockLoading } from "@/components/Stock/StockLoading";
 import get_stock_price from "@/lib/actions";
 
 export function StockRoot({ props }: { props: StockType }) {
@@ -15,11 +15,9 @@ export function StockRoot({ props }: { props: StockType }) {
         <StockHeader props={props} />
       </CardHeader>
       <Separator />
-      <CardContent className="p-4 pb-0">
+      <CardContent className="p-4">
         <Suspense fallback={<StockLoading />}>
-          <StockContent
-            props={fetchStock}
-          />
+          <StockContent props={fetchStock} />
         </Suspense>
       </CardContent>
     </Card>

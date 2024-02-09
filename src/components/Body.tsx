@@ -8,12 +8,12 @@ export async function Body() {
   const stocks = JSON.parse(file).stocks as StockType[];
   return (
     <>
-      <div className="flex flex-col gap-6 pb-24">
+      <div className="flex flex-col gap-6">
         {stocks.map((stock: StockType, index: number) => (
           <StockRoot key={index} props={stock} />
         ))}
       </div>
-      <Footer stocks={stocks} />
+      <Footer />
     </>
   );
 }

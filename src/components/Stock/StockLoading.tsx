@@ -1,6 +1,4 @@
 import { Skeleton } from "@/components/ui/skeleton";
-import { Button } from "../ui/button";
-import { CardFooter } from "../ui/card";
 
 export function StockLoading() {
   return (
@@ -16,14 +14,6 @@ export function StockLoading() {
           </div>
         </div>
       </div>
-      <CardFooter className="flex items-center justify-center mt-6">
-        <Button
-          disabled={true}
-          className="text-xl tracking-tight text-center font-bold shadow-lg shadow-secondary ring-2"
-        >
-          আবার চেক করো
-        </Button>
-      </CardFooter>
     </>
   );
 }
