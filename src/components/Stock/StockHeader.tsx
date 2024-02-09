@@ -1,6 +1,7 @@
 import { StockPropsType } from "@/types/stock";
 import { CardDescription, CardTitle } from "@/components/ui/card";
 import { convertToBangla } from "@/lib/utils";
+
 export async function StockHeader({ props }: { props: StockPropsType }) {
   const buyingPriceInBd = convertToBangla(props.buyingPrice);
   const stockAmountInBd = convertToBangla(props.stockAmount);

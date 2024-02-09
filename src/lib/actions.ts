@@ -8,10 +8,10 @@ export default async function get_stock_price(company: string) {
     const html = await response.text();
     const $ = load(html, { decodeEntities: false, scriptingEnabled: false });
     const data = $("td[width=25%]").first().html();
-    return data;
+    return data as string;
   });
   if (price === "-") {
     return -1;
   }
-  return price;
+  return +price;
 }
