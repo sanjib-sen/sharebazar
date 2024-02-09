@@ -1,8 +1,6 @@
 import { load } from "cheerio";
 import { convertToBangla } from "@/lib/utils";
-import { promises as fs } from "fs";
-import { StockType } from "@/types/stock";
-import { join } from "path";
+import { stocks } from "@/config/stocks";
 
 export default async function get_stock_price(company: string) {
   const url = `https://dsebd.org/displayCompany.php?name=${company}`;
@@ -18,8 +16,6 @@ export default async function get_stock_price(company: string) {
     return +data;
   });
 
-  const file = await fs.readFile(join(process.cwd(), "/data.json"), "utf8");
-  const stocks = JSON.parse(file).stocks as StockType[];
   const stock = stocks.find((stock) => stock.companyName === company);
   if (!stock) {
     throw new Error("Stock not found");
