@@ -1,19 +1,16 @@
 "use client";
 
-import { convertToBangla } from "@/lib/utils";
-import { StockPropsType } from "@/types/stock";
+import { StockPropsType, StockType } from "@/types/stock";
 import { use, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CardFooter } from "@/components/ui/card";
 
 export function StockContent({
   props,
-  fetchStock,
 }: {
-  props: StockPropsType;
-  fetchStock: Promise<number>;
+  props: Promise<StockPropsType>;
 }) {
-  const stockPrice = use(fetchStock);
+  const { stockPrice, stockPriceInBd, totalProfit, totalStockPriceInBd, totalProfitInBd } = use(props);
   if (stockPrice === -1) {
     return (
       <div className="flex flex-row items-center justify-center text-4xl font-bold tracking-tighter px-4 text-balance text-red-500">
@@ -21,15 +18,6 @@ export function StockContent({
       </div>
     );
   }
-
-  const stockPriceInBd = convertToBangla(stockPrice);
-  const totalStockPrice = stockPrice * props.stockAmount;
-  const totalStockPriceInBd = convertToBangla(totalStockPrice);
-  const totalProfit = totalStockPrice - props.buyingPrice * props.stockAmount;
-  const totalProfitInBd = new Intl.NumberFormat("bn-BD", {
-    maximumFractionDigits: 0,
-    signDisplay: "never",
-  }).format(totalProfit);
   return (
     <>
       <div className="flex items-center justify-center space-x-2">
