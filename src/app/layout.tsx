@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
-
-import { ThemeProvider } from "@/components/theme-provider";
 import "@/app/globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "ShareBazar for SEN Family",

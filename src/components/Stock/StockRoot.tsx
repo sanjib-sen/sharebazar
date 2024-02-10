@@ -1,16 +1,16 @@
+import { StockContent } from "@/components/Stock/StockContent";
+import { StockHeader } from "@/components/Stock/StockHeader";
+import { StockLoading } from "@/components/Stock/StockLoading";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { StockContent } from "@/components/Stock/StockContent";
-import { StockType } from "@/types/stock";
-import { StockHeader } from "@/components/Stock/StockHeader";
-import { Suspense } from "react";
-import { StockLoading } from "@/components/Stock/StockLoading";
 import get_stock_price from "@/lib/actions";
+import { StockType } from "@/types/stock";
+import { Suspense } from "react";
 
 export function StockRoot({ props }: { props: StockType }) {
   const fetchStock = get_stock_price(props.companyName);
   return (
-    <Card className="ring-2 max-w-sm ring-primary shadow-lg shadow-primary">
+    <Card className="max-w-sm shadow-lg shadow-primary ring-2 ring-primary">
       <CardHeader className="pb-2">
         <StockHeader props={props} />
       </CardHeader>

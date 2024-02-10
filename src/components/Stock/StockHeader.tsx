@@ -1,6 +1,6 @@
-import { StockType } from "@/types/stock";
 import { CardDescription, CardTitle } from "@/components/ui/card";
 import { convertToBangla } from "@/lib/utils";
+import { StockType } from "@/types/stock";
 
 export async function StockHeader({ props }: { props: StockType }) {
   const buyingPriceInBd = convertToBangla(props.buyingPrice);
@@ -10,7 +10,7 @@ export async function StockHeader({ props }: { props: StockType }) {
   return (
     <>
       <CardTitle>{props.companyName}</CardTitle>
-      <CardDescription className="flex flex-row justify-between gap-4 text-xs text-muted-foreground text-balance">
+      <CardDescription className="flex flex-row justify-between gap-4 text-balance text-xs text-muted-foreground">
         <span className="text-left">
           কেনা {buyingPriceInBd} টাকা প্রতি স্টক
         </span>

@@ -1,6 +1,7 @@
-import { load } from "cheerio";
-import { convertToBangla } from "@/lib/utils";
 import { stocks } from "@/config/stocks";
+import { convertToBangla } from "@/lib/utils";
+import { StockPropsType } from "@/types/stock";
+import { load } from "cheerio";
 
 export default async function get_stock_price(company: string) {
   const url = `https://dsebd.org/displayCompany.php?name=${company}`;
@@ -10,6 +11,7 @@ export default async function get_stock_price(company: string) {
     const html = await response.text();
     const $ = load(html, { decodeEntities: false, scriptingEnabled: false });
     const data = $("td[width=25%]").first().html() as string;
+    console.log(data);
     if (data === "-") {
       return -1;
     }
@@ -20,6 +22,7 @@ export default async function get_stock_price(company: string) {
   if (!stock) {
     throw new Error("Stock not found");
   }
+
   const stockPriceInBd = convertToBangla(stockPrice);
   const totalStockPrice = stockPrice * stock.stockAmount;
   const totalStockPriceInBd = convertToBangla(totalStockPrice);
@@ -35,5 +38,5 @@ export default async function get_stock_price(company: string) {
     totalStockPriceInBd,
     totalProfitInBd,
     totalProfit,
-  };
+  } as StockPropsType;
 }
