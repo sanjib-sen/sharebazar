@@ -11,7 +11,6 @@ export default async function get_stock_price(company: string) {
     const html = await response.text();
     const $ = load(html, { decodeEntities: false, scriptingEnabled: false });
     const data = $("td[width=25%]").first().html() as string;
-    console.log(data);
     if (data === "-") {
       return -1;
     }
